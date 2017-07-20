@@ -36,7 +36,7 @@ end
 ### Anrufen und Casting von der öffentlichen API
 Als nächstes müssen wir die öffentliche API für das Modul zur Verfügung stellen. Dies sind die Funktionen, die von anderen Modulen Ihrer Anwendung aufgerufen werden.
 
-Die read/1-Funktion ruft die Call/2-Funktion des GenServer.module auf, um die Anfrage an den Prozess zu senden. Der Prozess blockiert, bis er eine Antwort vom Server erhalten hat. Das erste Argument ist die ProzessID. Das zweite der Term der für die Auswahl (Per Pattern-Mattiching) des Callback-Handle benötigt wird.
+Die read/1-Funktion ruft die Call/2-Funktion des GenServer.module auf, um die Anfrage an den Prozess zu senden. Der Prozess blockiert, bis er eine Antwort vom Server erhalten hat. Das erste Argument ist die ProzessID. Das zweite der Term der für die Auswahl (Per Pattern-Matching) des Callback-Handle benötigt wird.
 
 Die add/2-Funktion ruft die Cast/2-Funktion des GenServer.module auf. Diese Funktion wartet nicht auf die Antwort des Servers.
 ```
@@ -57,16 +57,16 @@ def init(:ok) do
 end
 ```
 
-#### Handling Call requests
-Next we need to handle the incoming requests from the public API. First we will handle the :read request:
+#### Call Anfragen bearbeiten
+Als nächstes behandeln wir die Call-Anfrage der API mit dem :read Term
 
 ```
 def handle_call({:read}, _from, list) do
   {:reply, list, list}
 end
 ```
-#### Handling Cast requests
-Next we can handle the cast request:
+#### Cast Anfragen bearbeiten
+Als nächstes behandeln wir die Cast-Anfrage der API mit dem :add Term
 
 ```
 def handle_cast({:add, item}, list) do
